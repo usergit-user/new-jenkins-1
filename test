@@ -1,0 +1,21 @@
+jobs:
+  test-stage-1:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: echo "Running test stage 1"
+
+  test-stage-2:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    needs: test-stage-1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: echo "Running test stage 2"
